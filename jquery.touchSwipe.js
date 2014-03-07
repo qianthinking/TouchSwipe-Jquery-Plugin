@@ -215,7 +215,11 @@
 		triggerOnTouchLeave:false, 
 		allowPageScroll: "auto", 
 		fallbackToMouseEvents: true,	
-		excludedElements:"label, button, input, select, textarea, a, .noSwipe"
+		excludedElements:"label, button, input, select, textarea, a, .noSwipe",
+    boundTopTolerance: 0,
+    boundRightTolerance: 0,
+    boundBottomTolerance: 0,
+    boundLeftTolerance: 0
 	};
 
 
@@ -1826,7 +1830,7 @@
 		* @param {int} bounds.bottom The bottommost value
 		 */
 		function isInBounds(point, bounds) {
-			return (point.x > bounds.left && point.x < bounds.right && point.y > bounds.top && point.y < bounds.bottom);
+			return (point.x > (bounds.left - options.boundLeftTolerance) && point.x < (bounds.right + options.boundRightTolerance) && point.y > (bounds.top - options.boundTopTolerance) && point.y < (bounds.bottom + options.boundBottomTolerance));
 		};
 	
 	
